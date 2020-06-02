@@ -1,0 +1,14 @@
+//
+int x = 0
+
+x = x - 3
+x = x + 20
+print(x)
+read(x)
+print(x)
+x = x * 3 + 2 + 10
+print(x)
+x = x *2
+print(x)
+x = x /2 
+print(x)

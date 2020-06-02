@@ -1,0 +1,92 @@
+.data
+newline: .asciiz "\n"
+result_int:  .word 0
+x:  .word 0
+.text
+# result_int = 0 =x
+li $t0, 0
+sw $t0 , x
+# result_int = x -3
+lw $t0, x
+li $t1, 3
+SUB $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+# result_int = x +20
+lw $t0, x
+li $t1, 20
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+li $v0 , 5
+syscall
+sw $v0 , x
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+# result_int = x *3
+lw $t0, x
+li $t1, 3
+MUL $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int +2
+lw $t0, result_int
+li $t1, 2
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int +10
+lw $t0, result_int
+li $t1, 10
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+# result_int = x *2
+lw $t0, x
+li $t1, 2
+MUL $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+# result_int = x /2
+lw $t0, x
+li $t1, 2
+DIV $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+

@@ -1,0 +1,25 @@
+//
+int x
+int y
+int z
+float i
+float j
+float k
+
+read(y)
+read(x)
+read(z)
+read(k)
+read(j)
+read(i)
+
+print(z)
+print(y)
+print(x)
+
+print('\n')
+
+print(i)
+print(j)
+print(k)
+

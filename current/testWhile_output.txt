@@ -1,0 +1,34 @@
+.data
+newline: .asciiz "\n"
+result_int:  .word 0
+s:  .asciiz "'elo'"
+str0:  .asciiz "'po whileu'\n"
+x:  .word 0
+.text
+# result_int = 0 =x
+li $t0, 0
+sw $t0 , x
+label0: 
+lw $t0, x
+li $t1, 10
+bge $t0, $t1, label1
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+# result_int = x +1
+lw $t0, x
+li $t1, 1
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+j label0
+label1: 
+li $v0 , 4
+la $a0 , str0
+syscall
+

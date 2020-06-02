@@ -1,0 +1,68 @@
+.data
+newline: .asciiz "\n"
+i:  .float 0.0
+j:  .float 0.0
+k:  .float 0.0
+str0:  .asciiz "'\n'\n"
+x:  .word 0
+y:  .word 0
+z:  .word 0
+.text
+li $v0 , 5
+syscall
+sw $v0 , y
+li $v0 , 5
+syscall
+sw $v0 , x
+li $v0 , 5
+syscall
+sw $v0 , z
+li $v0 , 6
+syscall
+s.s $f0 , k
+li $v0 , 6
+syscall
+s.s $f0 , j
+li $v0 , 6
+syscall
+s.s $f0 , i
+li $v0 , 1
+lw $a0 , z
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+li $v0 , 1
+lw $a0 , y
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+li $v0 , 4
+la $a0 , str0
+syscall
+li $v0 , 2
+l.s $f12 , i
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+li $v0 , 2
+l.s $f12 , j
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+li $v0 , 2
+l.s $f12 , k
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+

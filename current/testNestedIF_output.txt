@@ -1,0 +1,119 @@
+.data
+newline: .asciiz "\n"
+q:  .word 0
+str0:  .asciiz "'10 < 15'\n"
+str1:  .asciiz "'15 = 15'\n"
+str10:  .asciiz "'WTF^2'\n"
+str2:  .asciiz "'99 > q'\n"
+str3:  .asciiz "'z >= x'\n"
+str4:  .asciiz "'x < q'\n"
+str5:  .asciiz "'WTF'\n"
+str6:  .asciiz "'OK'\n"
+str7:  .asciiz "'!?'\n"
+str8:  .asciiz "'OK'\n"
+str9:  .asciiz "'OK'\n"
+x:  .word 0
+y:  .word 0
+z:  .word 0
+.text
+# result_int = 5 =x
+li $t0, 5
+sw $t0 , x
+# result_int = 3 =y
+li $t0, 3
+sw $t0 , y
+# result_int = 5 =z
+li $t0, 5
+sw $t0 , z
+# result_int = 25 =q
+li $t0, 25
+sw $t0 , q
+label0: 
+li $t0, 10
+li $t1, 15
+bge $t0, $t1, label1
+li $v0 , 4
+la $a0 , str0
+syscall
+label2: 
+li $t0, 15
+li $t1, 15
+bne $t0, $t1, label3
+li $v0 , 4
+la $a0 , str1
+syscall
+label3: 
+label4: 
+li $t0, 99
+lw $t1, q
+ble $t0, $t1, label5
+li $v0 , 4
+la $a0 , str2
+syscall
+label6: 
+lw $t0, z
+lw $t1, x
+blt $t0, $t1, label7
+li $v0 , 4
+la $a0 , str3
+syscall
+label8: 
+lw $t0, x
+lw $t1, q
+bge $t0, $t1, label9
+li $v0 , 4
+la $a0 , str4
+syscall
+label9: 
+label10: 
+li $t0, 15
+li $t1, 10
+bne $t0, $t1, label11
+li $v0 , 4
+la $a0 , str5
+syscall
+label11: 
+label12: 
+li $t0, 15
+li $t1, 10
+beq $t0, $t1, label13
+li $v0 , 4
+la $a0 , str6
+syscall
+label14: 
+li $t0, 10
+li $t1, 10
+beq $t0, $t1, label15
+li $v0 , 4
+la $a0 , str7
+syscall
+label15: 
+label16: 
+li $t0, 10
+li $t1, 10
+bne $t0, $t1, label17
+li $v0 , 4
+la $a0 , str8
+syscall
+label18: 
+li $t0, 5
+li $t1, 5
+bne $t0, $t1, label19
+li $v0 , 4
+la $a0 , str9
+syscall
+label19: 
+label20: 
+li $t0, 5
+li $t1, 5
+beq $t0, $t1, label21
+li $v0 , 4
+la $a0 , str10
+syscall
+label21: 
+label17: 
+label13: 
+label7: 
+label5: 
+label1: 
+

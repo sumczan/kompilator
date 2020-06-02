@@ -1,0 +1,16 @@
+int x = 0
+int y = 0
+int z = 0
+
+while(x <= 3)
+	while(y <=3)
+		while(z <=3)
+			print(x)
+			z = z+1
+		elihw
+		z = 0
+		y = y+1
+	elihw
+	y = 0
+x = x+1
+elihw

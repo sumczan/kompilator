@@ -1,0 +1,31 @@
+//
+int x
+int y = 0
+int z = 0
+
+read(x)
+
+if(x > 5)
+	print('x>5')
+	print('podaj y')
+	read(y)
+	if(y < x)
+		print('y mniejsze od x')
+	fi
+	if(x == y)
+		print('y == x')
+	else
+		print('y!=x')
+	fi
+else
+	print('x<5')
+	print(x)
+	print(y)
+	print('podaj z')
+	read(z)
+	if(z != 5)
+		print('z != 5')
+	else
+		print('z == 5')
+	fi
+fi

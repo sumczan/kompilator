@@ -1,0 +1,29 @@
+.data
+newline: .asciiz "\n"
+result_float:  .float 0.0
+varf0:  .float 10.5
+x:  .float 0.0
+y:  .word 0
+z:  .float 0.0
+.text
+# result_float = 10.500000 =x
+l.s $f0, varf0
+s.s $f0 , x
+# result_int = 5 =y
+li $t0, 5
+sw $t0 , y
+# result_float = x -y
+l.s $f0, x
+lw $t1, y
+SUB.s $f0 , $f0 , $f1
+s.s $f0 , result_float
+# result_float = result_float =z
+l.s $f0, result_float
+s.s $f0 , z
+li $v0 , 2
+l.s $f12 , z
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+

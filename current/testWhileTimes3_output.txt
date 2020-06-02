@@ -1,0 +1,71 @@
+.data
+newline: .asciiz "\n"
+result_int:  .word 0
+x:  .word 0
+y:  .word 0
+z:  .word 0
+.text
+# result_int = 0 =x
+li $t0, 0
+sw $t0 , x
+# result_int = 0 =y
+li $t0, 0
+sw $t0 , y
+# result_int = 0 =z
+li $t0, 0
+sw $t0 , z
+label0: 
+lw $t0, x
+li $t1, 3
+bgt $t0, $t1, label1
+label2: 
+lw $t0, y
+li $t1, 3
+bgt $t0, $t1, label3
+label4: 
+lw $t0, z
+li $t1, 3
+bgt $t0, $t1, label5
+li $v0 , 1
+lw $a0 , x
+syscall
+li $v0 , 4
+la $a0 , newline
+syscall
+# result_int = z +1
+lw $t0, z
+li $t1, 1
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =z
+lw $t0, result_int
+sw $t0 , z
+j label4
+label5: 
+# result_int = 0 =z
+li $t0, 0
+sw $t0 , z
+# result_int = y +1
+lw $t0, y
+li $t1, 1
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =y
+lw $t0, result_int
+sw $t0 , y
+j label2
+label3: 
+# result_int = 0 =y
+li $t0, 0
+sw $t0 , y
+# result_int = x +1
+lw $t0, x
+li $t1, 1
+ADD $t0 , $t0 , $t1
+sw $t0 , result_int
+# result_int = result_int =x
+lw $t0, result_int
+sw $t0 , x
+j label0
+label1: 
+
